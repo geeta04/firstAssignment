@@ -1,0 +1,91 @@
+body{
+    margin: 0;
+}
+#mcq{
+    height:400px;
+    width:100%;
+    background-color:rgb(207, 134, 134);
+}
+.question-list{
+    width:25%;
+    height:400px;
+}
+.ques{
+    
+    width:50%;
+}
+p{ padding:5px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 19px;
+}
+label{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+
+}
+#next{
+    float:right;
+}
+button{
+    background-color: rgb(145, 99, 110);
+    height:40px;
+    min-width:50px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+button:hover{
+    background-color:rgb(112, 58, 72);
+}
+.questionsCount > p > span{
+    width:40px;
+    border-radius:50%;
+    background-color:peachpuff;
+    display: inline-block;
+    text-align: center;
+    height:40px;
+    box-sizing: border-box;
+    padding-top:10px;
+    margin-bottom: 5px;
+}
+.questionsCount > p {
+    display: inline-block;
+
+}
+ul{
+    list-style-type: none;
+    
+}
+/* ul li:hover{
+    background-color: rgb(216, 167, 124);
+} */
+ul li{
+    width:40px;
+    border-radius:50%;
+    background-color:peachpuff;
+    display: inline-block;
+    text-align: center;
+    height:40px;
+    box-sizing: border-box;
+    padding-top:10px;
+    margin-bottom: 5px;
+}
+.ques,.question-list{
+    display: inline-block;
+    vertical-align: top;
+}
+/* color classes */
+.not-answered{
+    background-color: red !important;
+
+}
+.answered{
+    background-color:green !important;
+    
+}
+.mark-for-review{
+    background-color: purple !important;
+}
+.answer-mark{
+    background-color:blue !important;
+    
+}

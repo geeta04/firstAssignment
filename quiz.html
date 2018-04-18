@@ -1,0 +1,58 @@
+<html>
+
+<head>
+        <link rel="stylesheet" href="quiz.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.js" defer="defer"></script>
+    
+</head>
+
+<body>
+    <div id="mcq">
+        <div class="ques">
+            <p>Question No. <span id="questionNumber"></span></p>
+            <p id="questionLine"></p>
+            <input type="radio" name="optionValue" id="option1"> <label for="option1" id="optionLine1"></label>
+            <input type="radio" name="optionValue" id="option2"> <label for="option2" id="optionLine2"></label>
+            <input type="radio" name="optionValue" id="option3"> <label for="option3" id="optionLine3"></label>
+            <input type="radio" name="optionValue" id="option4"> <label for="option4" id="optionLine4"></label>
+        </div> 
+        <div class="question-list">
+            <ul>
+                <li id="1">1</li>
+                <li id="2" >2</li>
+                <li id="3">3</li>
+                <li id="4">4</li>
+                <li id="5">5</li>
+                <li id="6">6</li>
+                <li id="7">7</li>
+                <li id="8">8</li>
+                <li id="9">9</li>
+                <li id="10">10</li>
+                <li id="11">11</li>
+                <li id="12">12</li>
+                
+                
+            </ul>
+            </div>
+             
+    </div>
+    <button id="next">Save & Next</button>
+    <button id="markForReview"> Mark For Review & Next</button>  
+    <button id="previous">Previous</button>
+
+   
+    <div class="questionsCount">
+    <p><span class="not-visited" id="notVisitedCount"></span> Not Visited</p>
+    <p><span class="not-answered" id="notAnsweredCount"></span> Not Answered</p>
+    <p><span class="answered" id="AnsweredCount"></span> Answered</p>
+    <p><span class="mark-for-review" id="markForReviewCount"></span> Marked For Review </p>
+    <p><span class="answer-mark" id="answeredMarkForReviewCount"></span> Answered & Marked For Review </p>
+    </div>
+    
+    
+    
+    
+    <script src="quiz.js" defer="defer"></script>
+</body>
+
+</html>
