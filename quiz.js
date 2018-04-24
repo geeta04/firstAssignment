@@ -121,8 +121,7 @@ var questionArray = [
     }
 
 ];
-var answeredOptionArray = new Array(questionArray.length);
-answeredOptionArray.fill(0);
+
 var questionLine = document.getElementById('questionLine');
 var questionNumber = document.getElementById('questionNumber');
 var optionLine1 = document.getElementById('optionLine1');
@@ -163,6 +162,13 @@ optionLine2.innerHTML = questionArray[0]['optionLine2'];
 optionLine3.innerHTML = questionArray[0]['optionLine3'];
 optionLine4.innerHTML = questionArray[0]['optionLine4'];
 
+
+//In your code where you get a handle on the checked radio button, simply do
+// choice = choices[i].value; //I'm assuming here is where you get the value
+// UserAnswers.push(choice);
+
+//Once you do this for all the questions, just do
+
 function checkPartOfAndchangeAccordingly(partOf) {
     // answered++;
     // AnsweredCount.innerHTML = answered;
@@ -201,6 +207,64 @@ function changeQuestion(index) {
     optionLine3.innerHTML = questionArray[index]['optionLine3'];
     optionLine4.innerHTML = questionArray[index]['optionLine4'];
 }
+var userAnswers = new Array(questionArray.length);
+userAnswers.fill('0');
+
+function saveCheckboxState(index) {
+    // var cbChecked = document.querySelector('[name="optionValue"]:checked')
+    // for(i=0;i<questionArray.length;i++){
+    // if (cbChecked != null) {
+    //     UserAnswers.push(cbChecked.value);
+    // }
+    if(option1.checked) {
+        userAnswers[index] = '1';
+    } else if(option2.checked) {
+        userAnswers[index] = '2';
+    } else if(option3.checked) {
+        userAnswers[index] = '3';
+    } else if(option4.checked) {
+        userAnswers[index] = '4';
+    }
+    console.log(userAnswers);
+}
+  
+    
+    // if (document.getElementById('option1').checked) {
+    //     option1_value = document.getElementById('option1').value;
+    //     alert("saved");
+    //     UserAnswers.push(option1_value);
+    // }
+    // else if (document.getElementById('option2').checked) {
+    //     option2_value = document.getElementById('option2').value;
+    //     alert("saved");
+    //     UserAnswers.push(option2_value);
+        
+        
+    // }
+    // else if (document.getElementById('option3').checked) {
+    //     option3_value = document.getElementById('option3').value;
+    //     alert("saved");
+    //     UserAnswers.push(option3_value);        
+        
+    // }
+    // else if (document.getElementById('option4').checked) {
+    //     option4_value = document.getElementById('option4').value;
+    //     alert("saved");
+    //     UserAnswers.push(option4_value);
+        
+        
+    // }
+    // localStorage["answers"] = JSON.stringify(UserAnswers);
+    
+
+
+function uncheckingNextQuestion(newQuestionNumber){
+    option1.checked = false;
+    option2.checked = false;
+    option3.checked = false;
+    option4.checked = false;
+}
+
 
 //clicking next button functionality
 $("#next").click(function () {
@@ -219,6 +283,13 @@ $("#next").click(function () {
     // notVisited--; //NOT VISITED
     // notVisitedCount.innerHTML = notVisited;
 
+    // if(marked) {
+    //     changeAnswere();
+    //     if(partof) {
+
+    //     }
+    // }
+
     if (!(questionArray[changePartOfIndex].partOf == 'answered')
         && (option1.checked || option2.checked || option3.checked || option4.checked)) {
         //if(optionValue.checked) {
@@ -229,10 +300,10 @@ $("#next").click(function () {
         checkPartOfAndchangeAccordingly(questionArray[changePartOfIndex].partOf);
         document.getElementById(arrayQuestionIndex).classList.add('answered');
         questionArray[changePartOfIndex].partOf = "answered";
-        option1.checked = false;
-        option2.checked = false;
-        option3.checked = false;
-        option4.checked = false;
+        saveCheckboxState(changePartOfIndex);
+        uncheckingNextQuestion();
+
+
     }
     else if (!(questionArray[changePartOfIndex].partOf == 'not-answered')) {
         checkPartOfAndchangeAccordingly(questionArray[changePartOfIndex].partOf);
