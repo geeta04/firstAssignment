@@ -121,7 +121,8 @@ var questionArray = [
     }
 
 ];
-
+var answeredOptionArray = new Array(questionArray.length);
+answeredOptionArray.fill(0);
 var questionLine = document.getElementById('questionLine');
 var questionNumber = document.getElementById('questionNumber');
 var optionLine1 = document.getElementById('optionLine1');
@@ -136,7 +137,7 @@ var notAttemptedCount = document.getElementById('notVisitedCount');
 var optionValue = document.getElementById('optionValue');
 var markForReviewCount = document.getElementById('markForReviewCount');
 
-questionNumber.innerHTML = 1 ;
+questionNumber.innerHTML = 1;
 //NOT VISITED
 var notVisited = 12;
 var notVisited = questionArray.length;
@@ -163,37 +164,37 @@ optionLine3.innerHTML = questionArray[0]['optionLine3'];
 optionLine4.innerHTML = questionArray[0]['optionLine4'];
 
 function checkPartOfAndchangeAccordingly(partOf) {
-        // answered++;
-        // AnsweredCount.innerHTML = answered;
-        // notAnswered--; //NOT VISITED
-        // notAnsweredCount.innerHTML = notAnswered;
+    // answered++;
+    // AnsweredCount.innerHTML = answered;
+    // notAnswered--; //NOT VISITED
+    // notAnsweredCount.innerHTML = notAnswered;
 
-        switch(partOf) {
-            case 'not-visited' :  notVisited--; //NOT VISITED
+    switch (partOf) {
+        case 'not-visited': notVisited--; //NOT VISITED
             notVisitedCount.innerHTML = notVisited;
             break;
 
 
-            case 'not-answered' :  notAnswered--; //NOT VISITED
+        case 'not-answered': notAnswered--; //NOT VISITED
             notAnsweredCount.innerHTML = notAnswered;
             break;
 
-            case 'answered' :  answered--; //NOT VISITED
+        case 'answered': answered--; //NOT VISITED
             AnsweredCount.innerHTML = answered;
             break;
 
-            case 'mark-for-review' :  reviewed--; //NOT VISITED
+        case 'mark-for-review': reviewed--; //NOT VISITED
             markForReviewCount.innerHTML = reviewed;
             break;
 
-            case 'answer-mark': answerReviewed--;
+        case 'answer-mark': answerReviewed--;
             answeredMarkForReviewCount.innerHTML = answerReviewed;
             break;
-        }
+    }
 }
 
 function changeQuestion(index) {
-    questionNumber.innerHTML = index+1;
+    questionNumber.innerHTML = index + 1;
     questionLine.innerHTML = questionArray[index]['question'];
     optionLine1.innerHTML = questionArray[index]['optionLine1'];
     optionLine2.innerHTML = questionArray[index]['optionLine2'];
@@ -218,7 +219,7 @@ $("#next").click(function () {
     // notVisited--; //NOT VISITED
     // notVisitedCount.innerHTML = notVisited;
 
-    if (!(questionArray[changePartOfIndex].partOf=='answered')
+    if (!(questionArray[changePartOfIndex].partOf == 'answered')
         && (option1.checked || option2.checked || option3.checked || option4.checked)) {
         //if(optionValue.checked) {
         answered++;
@@ -233,7 +234,7 @@ $("#next").click(function () {
         option3.checked = false;
         option4.checked = false;
     }
-    else if(!(questionArray[changePartOfIndex].partOf=='not-answered')) {
+    else if (!(questionArray[changePartOfIndex].partOf == 'not-answered')) {
         checkPartOfAndchangeAccordingly(questionArray[changePartOfIndex].partOf);
         // notVisited--; //NOT VISITED
         // notVisitedCount.innerHTML = notVisited;
@@ -256,7 +257,7 @@ $("#markForReview").click(function () {
     // optionLine2.innerHTML = questionArray[arrayQuestionIndex]['optionLine2'];
     // optionLine3.innerHTML = questionArray[arrayQuestionIndex]['optionLine3'];
     // optionLine4.innerHTML = questionArray[arrayQuestionIndex]['optionLine4'];
-    if (!(questionArray[changePartOfIndex].partOf=='answer-mark')
+    if (!(questionArray[changePartOfIndex].partOf == 'answer-mark')
         && (option1.checked || option2.checked || option3.checked || option4.checked)) {
         // notVisited--; //NOT VISITED
         // notVisitedCount.innerHTML = notVisited;
@@ -270,7 +271,7 @@ $("#markForReview").click(function () {
         option3.checked = false;
         option4.checked = false;
     }
-    else if(!(questionArray[changePartOfIndex].partOf=='mark-for-review')){
+    else if (!(questionArray[changePartOfIndex].partOf == 'mark-for-review')) {
         // notVisited--; //NOT VISITED
         // notVisitedCount.innerHTML = notVisited;
         checkPartOfAndchangeAccordingly(questionArray[changePartOfIndex].partOf);
@@ -289,8 +290,8 @@ $("ul li").click(function () {
     currentQuestionNumber = parseInt(questionNumber.innerHTML);
     if (!(id == currentQuestionNumber)) {
         document.getElementById(questionNumber.innerHTML).classList.add('not-answered');
-        if(questionArray[currentQuestionNumber - 1]['partOf']=='not-visited') {
-            questionArray[currentQuestionNumber - 1]['partOf']='not-answered';
+        if (questionArray[currentQuestionNumber - 1]['partOf'] == 'not-visited') {
+            questionArray[currentQuestionNumber - 1]['partOf'] = 'not-answered';
             notVisited--; //NOT VISITED
             notVisitedCount.innerHTML = notVisited;
             notAnswered++;
